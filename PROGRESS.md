@@ -2,6 +2,7 @@
 RELEASE_READY: false
 
 ## Ən son checkpoint — 2026-11-16
+- Vercel production deploy yaradıldı: `https://netflix-azerbaycan.vercel.app`. Deploy `Ready` vəziyyətindədir və CLI vasitəsilə 200 cavabı təsdiqlənib. Hazırda Vercel Authentication aktivdir; açıq giriş üçün deployment protection-un söndürülməsi ayrıca təsdiq gözləyir.
 - Kataloq 32 film/27 klassik; kartlarda neytral original SVG üzlüklər, hero-da düz tünd səhnə. Hüququ təsdiqlənməmiş `assets/stills/` yalnız yerli qovluqdadır və Git ignore olunur; build-ə daxil deyil.
 - `npm run check`, `npm run build`, `node --check src/main.js`, `node --check scripts/build.mjs` keçdi. `npm run check:release` manual QA/release şərtlərinə görə keçmir.
 - GitHub `https://github.com/Mister2314/netflixaz-template`-ə `main` push edildi və upstream ilə sinxronlaşıb; root commit `3ad36b9`.
