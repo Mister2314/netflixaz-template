@@ -5,7 +5,7 @@ await mkdir(new URL("dist/", root), { recursive: true });
 for (const name of ["index.html", "src"]) {
   await cp(new URL(name, root), new URL("dist/" + name, root), { recursive: true });
 }
-for (const name of ["identity", "fonts", "posters"]) {
+for (const name of ["identity", "fonts", "posters", "stills"]) {
   await cp(new URL("assets/" + name, root), new URL("dist/assets/" + name, root), { recursive: true });
 }
 console.log("Build hazırdır: dist/");

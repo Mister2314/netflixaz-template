@@ -1,1 +1,3 @@
-export const media = {};
+const stillIds=['arsin-mal-alan-1945','evlenmek-isteyirem','qizmar-gunes-altinda','bayqus-gelende','gece-qatarinda-qetl','bagli-qapi','sehrli-xalat','bag-movsumu','boyuk-dayaq','genc-qadinin-kisisi','bakinin-isiqlari','arxada-qalmis-gelecek','qezelxan','hem-ziyaret-hem-ticaret','seherli-bicinciler','sevinc-buxtasi','koroglu','yenilmez-batalyon','isareni-denizden-gozleyin','birisigun-geceyarisi','nizami','sebuhi','qara-golun-cengaverleri','qetl-gunu','cazibe-quvvesi','zirve','dag-mesesinden-kecerken','toy','bagcada-rahat-yer','baladadasin-ilk-mehebbeti','nar-bagi','nabat'];
+const extension=id=>id==='nar-bagi'||id==='nabat'?'jpg':'webp';
+export const media=Object.fromEntries(stillIds.map(id=>[id,{src:`./assets/stills/${id}.${extension(id)}`,presentationOnly:true}]));
