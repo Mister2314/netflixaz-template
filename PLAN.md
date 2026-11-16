@@ -30,7 +30,7 @@ Son yenilənmə: 16.11.2026. İstifadəçi kodu GitHub-a göndərəcək, Vercel-
 - [x] `npm run check` keçdi; 32 filmli schema və asset/URL quruluşu.
 - [x] `npm run build` keçdi, `dist/` yeniləndi.
 - [ ] `npm run check:release` — `RELEASE_READY: false` olduğu və manual QA açıq qaldığı üçün uğursuz.
-- [ ] GitHub push: repo URL məlumdur, amma lokal git init/auth yoxlanmalıdır.
+- [x] GitHub remote yaradıldı və `main` push edildi.
 - [ ] Vercel production, gizli pəncərə və real telefon yoxlaması istifadəçi deploy-dan sonra.
 - [ ] Hesabat DOCX hazırlanıb; vizual render yoxlaması lokal LibreOffice/Word renderer olmadığı üçün bloklanıb.
 

@@ -23,8 +23,8 @@ Son yenilənmə: 16.11.2026. Qutular yalnız müşahidə edilmiş yoxlamalara ə
 - [ ] Tövsiyədə boş janr mesajının ayrıca əl ilə ssenarisi qeydə alınmayıb.
 
 ## UI
-- [x] 320, 390, 768, 1440 px brauzer ölçülərində səhifə kənara daşmayıb; əsas səhifələr vizual baxılıb.
-- [x] Uzun film adları və düymələr ilkin desktop/mobile görünüşündə toqquşmadı.
+- [ ] Əvvəlki versiyada 320, 390, 768, 1440 px baxılıb; hüquqsuz kadrlar çıxarılandan sonra bu görünüş yenidən yoxlanmayıb.
+- [ ] Uzun film adları və düymələr əvvəlki desktop/mobile görünüşündə toqquşmamışdı; cari hero dəyişiklikdən sonra vizual check lazımdır.
 - [ ] Real telefonda və hover-siz bütün toxunma axınları yoxlanmayıb.
 - [ ] Tam klaviatura səyahəti, fokus halqası və kontrast auditinin hamısı yoxlanmayıb; modal Esc/fokusun qayıtması yoxlanıb.
 - [ ] Reduced motion və son brauzer konsol QA-sı ayrıca tam yoxlanmayıb.

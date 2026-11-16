@@ -1,6 +1,13 @@
 # Davam nöqtəsi
 RELEASE_READY: false
 
+## Ən son checkpoint — 2026-11-16
+- Kataloq 32 film/27 klassik; kartlarda neytral original SVG üzlüklər, hero-da düz tünd səhnə. Hüququ təsdiqlənməmiş `assets/stills/` yalnız yerli qovluqdadır və Git ignore olunur; build-ə daxil deyil.
+- `npm run check`, `npm run build`, `node --check src/main.js`, `node --check scripts/build.mjs` keçdi. `npm run check:release` manual QA/release şərtlərinə görə keçmir.
+- GitHub `https://github.com/Mister2314/netflixaz-template`-ə `main` push edildi; local root commit: `3ad36b9`.
+- Hesabat DOCX: `C:\Users\Morpheus\.codex\visualizations\2026\11\16\01a1e38a-438d-7851-80ec-5cfa09e6f668\Netflix-Azerbaycan-Teslim-Hesabati.docx`. Screenshot yoxdur. DOCX render üçün `soffice.exe`/Word əlçatan deyil; vizual səhifə yoxlaması aparılmayıb.
+- Qalıb: yeni rights-safe hero-nun vizual responsiv yoxlaması, bütün video playback, gizli pəncərə/real telefon/production QA. Vercel deploy və public URL-ni istifadəçi edəcək.
+
 ## 2026-11-16: müəllimə təqdimatına hazırlıq (aktiv)
 İstifadəçi tapşırıq PDF-inə uyğunlaşdırma, GitHub-a push və nümunə hesabat üslubunda DOCX istəyib. İstifadəçi Vercel deploy-u özü edəcək. Nümunə adı/qrupu Hüseynli Xəyal, Səhər qrupu (İRİA-TLF101) kimi istifadə olundu. Hesabatda screenshot yoxdur.
 
