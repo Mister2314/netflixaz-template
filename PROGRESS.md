@@ -4,7 +4,7 @@ RELEASE_READY: false
 ## Ən son checkpoint — 2026-11-16
 - Kataloq 32 film/27 klassik; kartlarda neytral original SVG üzlüklər, hero-da düz tünd səhnə. Hüququ təsdiqlənməmiş `assets/stills/` yalnız yerli qovluqdadır və Git ignore olunur; build-ə daxil deyil.
 - `npm run check`, `npm run build`, `node --check src/main.js`, `node --check scripts/build.mjs` keçdi. `npm run check:release` manual QA/release şərtlərinə görə keçmir.
-- GitHub `https://github.com/Mister2314/netflixaz-template`-ə `main` push edildi; local root commit: `3ad36b9`.
+- GitHub `https://github.com/Mister2314/netflixaz-template`-ə `main` push edildi; cari HEAD `67907a2`, root commit `3ad36b9`.
 - Hesabat DOCX: `C:\Users\Morpheus\.codex\visualizations\2026\11\16\01a1e38a-438d-7851-80ec-5cfa09e6f668\Netflix-Azerbaycan-Teslim-Hesabati.docx`. Screenshot yoxdur. DOCX render üçün `soffice.exe`/Word əlçatan deyil; vizual səhifə yoxlaması aparılmayıb.
 - Qalıb: yeni rights-safe hero-nun vizual responsiv yoxlaması, bütün video playback, gizli pəncərə/real telefon/production QA. Vercel deploy və public URL-ni istifadəçi edəcək.
 
@@ -21,17 +21,16 @@ RELEASE_READY: false
 - [x] Hesabat 32 film, 27 klassik, 24 video və 8 videosuz film barədə yazır; promo/fraqmentin rəsmi treyler olmadığını ayırır.
 
 ### Qalanlar və bloklayıcılar
-- Hüququ təsdiqlənməmiş `assets/stills/` artıq `dist/` build-ə daxil edilmir; Git indeksindən çıxarılıb root commit amend olunmalıdır. Fayllar yalnız yerli iş qovluğunda qalır.
+- Hüququ təsdiqlənməmiş `assets/stills/` `dist/` build-ə və GitHub tarixçəsinə daxil deyil. Fayllar yalnız yerli iş qovluğunda qalır.
 - 8 film üçün uyğun video yoxdur; bütün videoların faktiki playback-i ayrıca QA olunmayıb.
 - Gizli pəncərə, real telefon və production QA tamamlanmayıb. Buna görə release-ready deyil.
-- GitHub URL istifadəçidən alındı və remote əlavə olundu: `https://github.com/Mister2314/netflixaz-template.git`. Lokal root commit `d63e33d` yaradılıb; amend hələ qalıb. GitHub CLI login etməyib, repo-ya giriş network escalation ilə yoxlanmalıdır.
+- GitHub push uğurludur: `https://github.com/Mister2314/netflixaz-template` `main` branch HEAD `67907a2`; lokal branch origin/main ilə sinxronlaşıb.
 - Nümunə DOCX-in öz renderi də LibreOffice olmadığı üçün alınmadı; vizual template fidelity təsdiqlənməyib.
 
 ### Növbəti konkret addımlar
-1. Root commit-dən `assets/stills/` çıxarıb amend et; DOCX və local-only stills commit-ə daxil olmasın.
-2. Push-u istifadəçinin verdiyi GitHub URL-sinə sına; authentication və remote-dakı mövcud history-ni qoruyaraq həll et.
-3. Uğurlu push hash/linkini yoxla; push alınmasa dəqiq auth/network xətasını bildir.
-4. `RELEASE_READY` false saxla: production URL, gizli pəncərə və real telefon testləri istifadəçi Vercel deploy-dan sonra qalır.
+1. İstifadəçi Vercel-ə deploy etdikdən sonra canlı URL-ni əlavə et.
+2. Hüquqsuz kadrlar çıxarıldıqdan sonrakı responsiv/klaviatura yoxlamasını, treyler playback-i, gizli pəncərəni və real telefonu canlı mühitdə yoxla.
+3. `RELEASE_READY` false saxla; bütün açıq QA bəndləri tamamlandıqdan sonra yenilə.
 
 ## 2026-11-16: hüquqsuz kadrların public build-dən çıxarılması
 - [x] `src/data/media.js`-də rights=false source mapping-ləri public runtime-dan çıxarıldı.
