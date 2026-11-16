@@ -2,40 +2,14 @@
 const node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
 export function videoLabel(f){return f.trailer?.kind==='clip'?'Fraqment':f.trailer?.kind==='promo'?'Promo':'Treyler';}
 export function videoId(f){try{const u=new URL(f.trailer?.url);const id=u.hostname==='youtu.be'?u.pathname.slice(1):u.searchParams.get('v');return /^[\w-]{11}$/.test(id)?id:null;}catch{return null;}}
-let apiPromise;
-function youtubeAPI(){
- if(window.YT?.Player)return Promise.resolve(window.YT);
- if(!apiPromise)apiPromise=new Promise((resolve,reject)=>{
- const previous=window.onYouTubeIframeAPIReady;
- window.onYouTubeIframeAPIReady=()=>{previous?.();resolve(window.YT);};
- const script=document.createElement('script');script.src='https://www.youtube.com/iframe_api';script.onerror=()=>{apiPromise=null;reject(new Error('Video xidməti yüklənmədi'));};document.head.append(script);
- });return apiPromise;
-}
 export function player(f,muted=true){
  const id=videoId(f);if(!id)return node('p','Bu film üçün uyğun qısa video hələ tapılmayıb.','video-unavailable');
- const shell=node('div',null,'cinematic-player');const mount=node('div');
- const status=node('button','Video yüklənir…','playback-status');status.type='button';status.disabled=true;
- const controls=node('div',null,'cinematic-controls');
- const pause=node('button','Dayandır','playback-control');pause.type='button';pause.disabled=true;
- const sound=node('button',muted?'Səsi aç':'Səsi bağla','playback-control');sound.type='button';sound.disabled=true;
- controls.append(pause,sound);shell.append(mount,status,controls);
- let instance,disposed=false,playing=false,isMuted=muted,timeout;
- const observer=new MutationObserver(()=>{if(!shell.isConnected){disposed=true;clearTimeout(timeout);instance?.destroy();observer.disconnect();}});
- queueMicrotask(()=>{if(shell.isConnected)observer.observe(document.body,{childList:true,subtree:true});});
- const show=(text,action)=>{status.textContent=text;status.disabled=!action;status.hidden=false;status.onclick=action||null;};
- const play=()=>{instance?.unMute();isMuted=false;sound.textContent='Səsi bağla';instance?.playVideo();show('Video başladılır…');};
- youtubeAPI().then(YT=>{
- if(disposed||!shell.isConnected)return;
- instance=new YT.Player(mount,{host:'https://www.youtube-nocookie.com',videoId:id,playerVars:{autoplay:1,controls:0,playsinline:1,rel:0,origin:location.origin},events:{
- onReady:()=>{if(disposed)return;instance.getIframe().tabIndex=-1;pause.disabled=false;sound.disabled=false;muted?instance.mute():instance.unMute();instance.playVideo();timeout=setTimeout(()=>{if(!playing)show('Videonu başlat',play);},5000);},
- onStateChange:event=>{playing=event.data===1;pause.textContent=playing?'Dayandır':'Davam et';pause.setAttribute('aria-label',playing?'Videonu dayandır':'Videonu davam et');if(playing){clearTimeout(timeout);status.hidden=true;shell.classList.add('is-playing');}if(event.data===0){shell.classList.remove('is-playing');show('Yenidən bax',play);}},
- onAutoplayBlocked:()=>show('Səslə başlat',play),
- onError:()=>{clearTimeout(timeout);shell.classList.remove('is-playing');show('Video burada açıla bilmir. Başqa film seç.');pause.disabled=sound.disabled=true;}
- }});
- }).catch(()=>show('Video xidməti yüklənmədi. Pəncərəni bağlayıb yenidən aç.'));
- pause.onclick=()=>{if(playing)instance?.pauseVideo();else instance?.playVideo();};
- sound.onclick=()=>{isMuted=!isMuted;if(isMuted)instance?.mute();else instance?.unMute();sound.textContent=isMuted?'Səsi aç':'Səsi bağla';sound.setAttribute('aria-pressed',String(!isMuted));};
- shell.addEventListener('keydown',event=>{if(event.target!==shell)return;if(event.key===' '){event.preventDefault();pause.click();}});
+ const shell=node('div',null,'cinematic-player');
+ const frame=document.createElement('iframe');
+ const parameters=new URLSearchParams({autoplay:muted?'1':'0',controls:'1',playsinline:'1',rel:'0',mute:muted?'1':'0',origin:location.origin});
+ frame.src='https://www.youtube-nocookie.com/embed/'+id+'?'+parameters;
+ frame.title=f.title+' videosu';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;
+ shell.append(frame);
  return shell;
 }
 
